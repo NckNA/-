@@ -1,5 +1,5 @@
 extends Resource
-class_name TileData
+class_name PrototypeTileData
 
 @export var grid_x: int = 0
 @export var grid_y: int = 0

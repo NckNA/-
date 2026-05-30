@@ -7,7 +7,7 @@ const CELL_SIZE = 32
 signal tile_selected(tile_data)
 signal map_updated
 
-var map_data = {} # Dictionary of Vector2i -> TileData
+var map_data = {} # Dictionary of Vector2i -> PrototypeTileData
 var selected_tile_coords = Vector2i(-1, -1)
 
 func _ready():
@@ -17,7 +17,7 @@ func generate_map():
 	# 1. Fill with plain terrain
 	for y in range(MAP_HEIGHT):
 		for x in range(MAP_WIDTH):
-			var tile = TileData.new()
+			var tile = PrototypeTileData.new()
 			tile.grid_x = x
 			tile.grid_y = y
 			map_data[Vector2i(x, y)] = tile
@@ -74,7 +74,7 @@ func generate_map():
 
 	map_updated.emit()
 
-func get_tile_at_coords(coords: Vector2i) -> TileData:
+func get_tile_at_coords(coords: Vector2i) -> PrototypeTileData:
 	if coords in map_data:
 		return map_data[coords]
 	return null

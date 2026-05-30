@@ -45,7 +45,8 @@ func _init():
 	# 5. Mine can be built on iron
 	var iron_tile_coords = Vector2i(-1, -1)
 	for coords in map_manager.map_data:
-		if map_manager.map_data[coords].resource_type == "iron":
+		var tile = map_manager.map_data[coords]
+		if tile.resource_type == "iron":
 			iron_tile_coords = coords
 			break
 
