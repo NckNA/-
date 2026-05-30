@@ -9,10 +9,3 @@ class_name TileData
 @export var occupied: bool = false
 @export var building_type: String = "none" # none, mine, lumber_camp, quarry
 @export var building_resource_zone_id: int = -1
-
-func _init(x: int = 0, y: int = 0, terrain: String = "plain", resource: String = "none", zone_id: int = -1):
-	grid_x = x
-	grid_y = y
-	terrain_type = terrain
-	resource_type = resource
-	resource_zone_id = zone_id

@@ -17,7 +17,10 @@ func generate_map():
 	# 1. Fill with plain terrain
 	for y in range(MAP_HEIGHT):
 		for x in range(MAP_WIDTH):
-			map_data[Vector2i(x, y)] = TileData.new(x, y, "plain", "none", -1)
+			var tile = TileData.new()
+			tile.grid_x = x
+			tile.grid_y = y
+			map_data[Vector2i(x, y)] = tile
 
 	# 2. Forest area (deterministic)
 	# Let's put a forest in the top-left quadrant
