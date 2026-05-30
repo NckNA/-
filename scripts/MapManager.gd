@@ -1,5 +1,7 @@
 extends Node
 
+const PrototypeTileData = preload("res://scripts/PrototypeTileData.gd")
+
 const MAP_WIDTH = 48
 const MAP_HEIGHT = 32
 const CELL_SIZE = 32

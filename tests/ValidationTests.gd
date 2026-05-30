@@ -1,5 +1,7 @@
 extends SceneTree
 
+const PrototypeTileData = preload("res://scripts/PrototypeTileData.gd")
+
 func _init():
 	print("Starting Validation Tests...")
 
