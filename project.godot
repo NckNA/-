@@ -1,0 +1,21 @@
+; Engine configuration file.
+; It is best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+
+config_version=5
+
+[application]
+
+config/name="Владение"
+run/main_scene="res://scenes/GlobalMapScene.tscn"
+config/features=PackedStringArray("4.6")
+
+[autoload]
+
+GameState="*res://scripts/autoload/GameState.gd"
+SaveSystem="*res://scripts/autoload/SaveSystem.gd"
+
+[display]
+
+window/size/viewport_width=960
+window/size/viewport_height=640

@@ -1,0 +1,20 @@
+# Godot generated files
+.godot/
+.import/
+*.translation
+
+# Export credentials and local export output
+export_credentials.cfg
+build/
+dist/
+exports/
+
+# Local engine binaries should not be committed
+Godot_*.exe
+Godot_*.zip
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
