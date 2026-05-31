@@ -121,6 +121,16 @@ func _init():
 		print("[FAIL] Building lost resource_zone_id or wrong building")
 		success = false
 
+	# 11. Resource accumulation works
+	# We already built a mine, a lumber camp, and a quarry in previous tests.
+	# Let's call _process manually to simulate 1 second pass.
+	map_manager._process(1.1)
+	if map_manager.global_resources["iron"] == 1 and map_manager.global_resources["stone"] == 1 and map_manager.global_resources["wood"] == 1:
+		print("[PASS] Resource accumulation works")
+	else:
+		print("[FAIL] Resource accumulation failed. Wood: %d, Stone: %d, Iron: %d" % [map_manager.global_resources["wood"], map_manager.global_resources["stone"], map_manager.global_resources["iron"]])
+		success = false
+
 	if success:
 		print("ALL TESTS PASSED!")
 	else:

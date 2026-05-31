@@ -10,13 +10,22 @@ extends CanvasLayer
 @onready var occupied_label = $Panel/VBoxContainer/OccupiedLabel
 @onready var building_label = $Panel/VBoxContainer/BuildingLabel
 @onready var action_label = $Panel/VBoxContainer/ActionLabel
+@onready var resources_label = $ResourcesPanel/ResourcesLabel
 
 func _ready():
 	map_manager.tile_selected.connect(_on_tile_selected)
+	map_manager.resources_updated.connect(_on_resources_updated)
 	update_info(null)
 
 func _on_tile_selected(tile_data):
 	update_info(tile_data)
+
+func _on_resources_updated(resources):
+	resources_label.text = "Wood: %d\nStone: %d\nIron: %d" % [
+		resources["wood"],
+		resources["stone"],
+		resources["iron"]
+	]
 
 func update_info(tile_data):
 	if tile_data:

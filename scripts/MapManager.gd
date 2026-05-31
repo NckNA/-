@@ -8,9 +8,17 @@ const CELL_SIZE = 32
 
 signal tile_selected(tile_data)
 signal map_updated
+signal resources_updated(resources)
 
 var map_data = {} # Dictionary of Vector2i -> PrototypeTileData
 var selected_tile_coords = Vector2i(-1, -1)
+
+var global_resources = {
+	"wood": 0,
+	"stone": 0,
+	"iron": 0
+}
+var accumulation_timer = 0.0
 
 func _ready():
 	generate_map()
@@ -119,3 +127,28 @@ func build(building_type: String) -> String:
 	map_updated.emit()
 	tile_selected.emit(tile) # Refresh UI
 	return "Built " + building_type + " successfully."
+
+func _process(delta):
+	accumulation_timer += delta
+	if accumulation_timer >= 1.0:
+		accumulation_timer -= 1.0
+		accumulate_resources()
+
+func accumulate_resources():
+	var updated = false
+	for coords in map_data:
+		var tile = map_data[coords]
+		if tile.occupied:
+			match tile.building_type:
+				"mine":
+					global_resources["iron"] += 1
+					updated = true
+				"lumber_camp":
+					global_resources["wood"] += 1
+					updated = true
+				"quarry":
+					global_resources["stone"] += 1
+					updated = true
+
+	if updated:
+		resources_updated.emit(global_resources)
